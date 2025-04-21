@@ -1,0 +1,16 @@
+.disclaimer {
+    position: fixed;
+    width: 350px;
+    top : 10px;
+    background-color: #00da45;
+    padding: 9px;
+    border-radius: 5px;
+    margin: 20px 0;
+    z-index: 2000;
+    margin: 0 15%;
+}
+
+.disclaimer-text{
+    font-size: 9px;
+    text-align: justify;
+}
