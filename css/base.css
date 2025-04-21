@@ -120,7 +120,7 @@ footer .contact a:hover {
     margin: 0 7%;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 1000px){
     body{
         font-size: 15px;
     }
@@ -144,5 +144,19 @@ footer .contact a:hover {
 
     footer .right p, footer .contact a {
         font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 480px){
+    nav{
+        font-size: 10px;
+    }
+
+    nav ul li {
+        margin: 0 5px;
+    }
+
+    nav ul li a {
+        font-size: 10px;
     }
 }
