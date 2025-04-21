@@ -149,7 +149,7 @@ footer .contact a:hover {
 
 @media screen and (max-width: 480px){
     nav{
-        font-size: 10px;
+        font-size: 12px;
     }
 
     nav ul li {
@@ -157,6 +157,6 @@ footer .contact a:hover {
     }
 
     nav ul li a {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
