@@ -23,7 +23,6 @@
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
     <!-- ==========================
@@ -39,6 +38,72 @@
           </ul>
         </nav>
       </header>
+
+    <!-- ==========================
+         Main Content
+         ========================== -->
+    <main>
+        <!-- Projects Section -->
+        <section class="projects" id="projects">
+            <p class="bolder">Projects</p>
+            <div class="project-list">
+                <div class="project-item">
+                    <h3>Analyzing the Link Between Urbanization and Economic Growth</h3>
+                    <div class="project-item-part">
+                      <p class="project-item-text">As part of a team research project, we set out to explore the following question: Is urbanization correlated with economic growth? Our goal was to better understand the relationship between the growing concentration of people in cities and the increase in GDP per capita observed in many countries. We combined economic theory, existing literature, and statistical tools to support our analysis, all while working with publicly available data from the World Bank.</p>
+                      <img src="" alt="image 1" class="project-item-image">
+                    </div>
+                    <div class="project-item-part">
+                      <p class="project-item-text">We first collected, cleaned, and merged global data on urban population shares and GDP per capita. Using Python and Pandas, we handled outliers and missing values, then built visualizations and statistical models (linear regression via OLS) to quantify the relationship. The results revealed a strong overall correlation — especially in developed countries — but also showed significant disparities depending on region and development stage. We later refined our model by adding education level as a second variable, revealing that urbanization alone does not fully explain economic growth.</p>
+                      <img src="" alt="image 2" class="project-item-image">
+                    </div>
+                    <div class="project-item-part">
+                      <p class="project-item-text">This project helped me sharpen my skills in data analysis, data visualization, and collaborative research. More importantly, it showed me how statistical tools and economic reasoning can be combined to address complex real-world questions. Whether it’s understanding urban dynamics or solving business challenges, I enjoy using data to find meaningful insights that go beyond surface-level assumptions.</p>
+                      <img src="" alt="image 2" class="project-item-image">
+                    </div>
+                </div>
+                <div class="project-item">
+                  <h3>C-Wire – CSV Data Analysis CLI Tool (C + Shell)</h3>
+                  <div class="project-item-part">
+                    <p class="project-item-text">C-Wire is a collaborative academic project developed during my second year of engineering studies. Our objective was to create a command-line tool capable of analyzing large CSV files simulating the structure of an energy distribution network. The program had to parse, process, and classify electrical consumption data associated with high-voltage and low-voltage substations. Our approach relied heavily on optimized C programming and Bash scripting to ensure performance and usability.</p>
+                    <img src="" alt="image 1" class="project-item-image">
+                  </div>
+                  <div class="project-item-part">
+                    <p class="project-item-text">We implemented a self-balancing AVL tree structure in C to store and sort data dynamically by substation. This allowed for efficient insertion, lookup, and comparison operations. On the Shell side, we optimized the data extraction using grep and pipe operations to avoid heavy I/O caused by temporary files. This synergy between C and Shell scripting reduced processing times from 30+ minutes to under 15 seconds on realistic datasets.</p>
+                    <img src="" alt="image 2" class="project-item-image">
+                  </div>
+                  <div class="project-item-part">
+                    <p class="project-item-text">One of the most demanding aspects of the project was runtime optimization. Initially, poorly handled Shell loops and large temporary files made the tool unusably slow. Through careful profiling and structural improvements (alignment padding, logic refactoring), we managed to drastically improve performance. We also had to tackle issues in GnuPlot rendering, especially axis scaling and data readability. Solving these pushed us to divide our data into underload and overload categories, and develop two separate plots for each.</p>
+                    <img src="" alt="image 3" class="project-item-image">
+                  </div>
+                  <div class="project-item-part">
+                    <p class="project-item-text">C-Wire generates sorted CSV files and detailed visual summaries in the form of GnuPlot-generated histograms. These are exported as both PNG images and a combined PDF report. Among the bonus features, we implemented clean output formatting, logging, and a complete README + LaTeX documentation.</p>
+                    <img src="" alt="image 4" class="project-item-image">
+                  </div>
+                </div>
+                <div class="project-item">
+                  <h3>CY-Fish – Turn-Based Strategy Game (Terminal in C)</h3>
+                  <div class="project-item-part">
+                    <p class="project-item-text">CY-Fish is a terminal-based strategy game developed during my first year of engineering school. The concept is simple but engaging: players control penguins on a melting iceberg, trying to collect as many fish as possible before the game ends. Each turn, a player moves one of their penguins in a straight line across a hexagonal grid, collecting fish from the starting tile, which then disappears. The challenge increases as the board shrinks and options become more limited.</p>
+                    <img src="" alt="image 1" class="project-item-image">
+                  </div>
+                  <div class="project-item-part">
+                    <p class="project-item-text">The game was coded in C with a focus on modularity and stability. We implemented grid initialization, movement validation, turn management, and a scoring system. Depending on the number of players, the number of penguins and grid size adapt automatically. Multiple rule variants were integrated: from random or manual starting positions, to the inclusion of golden or rotten fish for bonus or penalty points. The game ends when all players are blocked, and the winner is announced based on the total score.</p>
+                    <img src="" alt="image 2" class="project-item-image">
+                  </div>
+                  <div class="project-item-part">
+                    <p class="project-item-text">Handling hexagonal movement logic on a 2D rectangular array was a real challenge. We had to create coordinate conversion logic to simulate 6-directional movement while respecting blocked paths, occupied tiles, and out-of-bounds cases. Ensuring clean user interaction and error handling in a text-only environment also tested our ability to debug and design with clarity. Through this, we learned a lot about pointer management, game state modeling, and teamwork under deadline pressure.</p>
+                    <img src="" alt="image 3" class="project-item-image">
+                  </div>
+                  <div class="project-item-part">
+                    <p class="project-item-text">This project sharpened my understanding of data structures, game logic, and user experience design even in constrained environments like a terminal. It also pushed me to think carefully about modular code, version control, and collaborative development. CY-Fish was a turning point in my early programming journey—it made me appreciate how much thought goes into even the most minimal interactive application.</p>
+                    <img src="" alt="image 4" class="project-item-image">
+                  </div>
+                </div>
+            </div>
+        </section>
+    </main>
+        
     
       <!-- ==========================
          Footer Section
