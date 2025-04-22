@@ -1,0 +1,34 @@
+main{
+    padding: 0;
+    margin: 0 10%;
+    margin-top:100px;
+}
+
+.project-item-part{
+    display: flex;
+    align-items:center;
+    justify-content: space-between;
+    margin: 100px 0;
+}
+
+.project-item-text{
+    width: 40%;
+}
+
+.project-item-image{
+    width: 50%;
+}
+
+iframe{
+    width: 100%;
+    height: 350px;
+}
+
+code[class*="language-"], pre[class*="language-"]{
+    font-size: 15px;
+    border-radius: 15px;
+}
+
+img[alt="lv"], img[alt="hexa"], img[alt="pinguin"]{
+    width: 80%;
+}
