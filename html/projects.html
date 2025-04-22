@@ -179,9 +179,9 @@ execdata: smartrobusnest.o avl.o maintreatment.o
                         style C fill:#828282,stroke:#ccc,stroke-width:0px,color:white
                         style D fill:#828282,stroke:#ccc,stroke-width:0px,color:white
 
-                        A[" <b>Input</b><br>Le joueur joue"] --> B[" <b>Check</b><br>Le coup est-il valide ?"]
-                        B --> C[" <b>Update Grid</b><br>Mettre à jour la grille"]
-                        C --> D[" <b>Switch Turn</b><br>Passer au joueur suivant"]
+                        A[" <b>Input</b><br>the gamers play"] --> B[" <b>Check</b><br>Is the move valid ?"]
+                        B --> C[" <b>Update Grid</b>"]
+                        C --> D[" <b>Switch Turn</b><br>Next player turn"]
                         D --> A
                       </div>                       
                     </div>
