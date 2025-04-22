@@ -15,6 +15,10 @@ body {
     margin: 0;
 }
 
+main{
+    margin: 0 7%;
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -33,12 +37,21 @@ img {
 header {
     margin: 0;
     padding: 0;
+    position: sticky;
+    top: 0;
+    height: 65px;
+    background: #ffffff;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 75%  ,rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
+    transition: top 0.3s;
+    z-index: 1000;
 }
 
 nav {
+    
     display: flex;
     justify-content: space-between;
     margin: 0 1%;
+    z-index: 1000;
 }
 
 nav ul {
@@ -81,7 +94,6 @@ p.title {
 p.semi-title {
     font-weight: 800;
     font-size: 30px;
-    margin: 60px 7% 0;
 }
 
 p.bolder {
@@ -163,5 +175,9 @@ footer .contact a:hover {
 
     nav ul li a {
         font-size: 12px;
+    }
+
+    .semi-title {
+        width: 90%;
     }
 }
