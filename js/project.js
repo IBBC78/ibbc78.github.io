@@ -1,23 +1,27 @@
-  const gallery = document.getElementById('gallery');
-  const items = Array.from(gallery.children);
-  const totalItems = items.length;
+const slider = document.querySelector('.gallery');
+let isDown = false;
+let startX;
+let scrollLeft;
 
-  // Dupliquer les éléments pour simuler un scroll infini
-  items.forEach(item => {
-    const clone = item.cloneNode(true);
-    gallery.appendChild(clone);
-  });
-
-  let scrollTimeout;
-
-  gallery.addEventListener('scroll', () => {
-    clearTimeout(scrollTimeout);
-    scrollTimeout = setTimeout(() => {
-      const maxScroll = gallery.scrollWidth / 2;
-      if (gallery.scrollLeft >= maxScroll) {
-        gallery.scrollLeft = gallery.scrollLeft - maxScroll;
-      } else if (gallery.scrollLeft < 1) {
-        gallery.scrollLeft = gallery.scrollLeft + maxScroll;
-      }
-    }, 40);
-  });
+slider.addEventListener('mousedown', e => {
+  isDown = true;
+  slider.classList.add('active');
+  startX = e.pageX - slider.offsetLeft;
+  scrollLeft = slider.scrollLeft;
+});
+slider.addEventListener('mouseleave', _ => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mouseup', _ => {
+  isDown = false;
+  slider.classList.remove('active');
+});
+slider.addEventListener('mousemove', e => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.pageX - slider.offsetLeft;
+  const SCROLL_SPEED = 3;
+  const walk = (x - startX) * SCROLL_SPEED;
+  slider.scrollLeft = scrollLeft - walk;
+});

@@ -1,38 +1,138 @@
 .gallery {
     padding: 1rem;
     display: grid;
-    grid-template-columns: repeat(auto-fill, 80vw);
-    grid-auto-flow: column;
-    grid-column-gap: 1rem;
+    grid-template-columns: repeat(10, 80vw);
+    grid-template-rows: 1fr;    
+    grid-column-gap: 3rem;
+    grid-row-gap: 1rem;
+    overflow: scroll;
     height: 80vh;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    scroll-snap-type: x mandatory;
+    scroll-snap-type: both mandatory;
     scroll-padding: 1rem;
-    scrollbar-width: none;
-  }
-  
-  .gallery::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .gallery li {
+}
+
+.active {
+	scroll-snap-type: unset;
+}
+
+.gallery>a {
+    color: #000;
     scroll-snap-align: center;
-    border-radius: 10px;
-    font-size: 0;
+    font-size: 0px;
     min-width: 80vw;
     height: 100%;
     transform: scale(1);
     transition: transform 0.3s ease-in-out;
-  }
+    display: inline-block;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: 10px;
+}
 
-  .gallery li:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    z-index: 1000;
-  }
-  
-  .gallery li.clone {
-    scroll-snap-align: none;
-  }
-  
+.MarvelTravel{
+    background-image: url(../images/MarvelTravel/destinations.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.data-analysis{
+    background-image: url(../images/Analysis/code.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.c-wire{
+    background-image: url(../images/C-Wire/code.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.cy-fish{
+    background-image: url(../images/CY-Fish/plateau.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+
+.blur{
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px);
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 10px;
+    padding: 0;
+    margin:0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.description-box{
+    font-size: 50px;
+    font-weight: 900;
+    color: rgb(255, 255, 255);
+    padding: 9%;
+}
+
+.description-box .description{
+    font-size: 25px;
+    font-weight: 500;
+    text-align: justify;
+}
+
+HR {
+    border: #fff solid 1px;
+}
+
+.description-box .title{
+    font-size: 50px;
+    font-weight: 900;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+}
+
+.description-box .title::after,
+.description-box .title::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-out;
+}
+
+.description-box .title::before {
+  bottom: -5px;
+  transform-origin: left;
+}
+
+.gallery>a:hover{
+
+.description-box .title::after, .description-box .title::before {
+  transform: scaleX(1);
+}
+
+}
+
+
+@media screen and (max-width: 768px) {   
+    .gallery::-webkit-scrollbar {
+        display: none;
+    }
+
+    .description-box .description{
+        font-size: 15px;
+    }
+
+    .description-box .title{
+        font-size: 30px;
+    }
+}
