@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBMKM54DLZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JBMKM54DLZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/ChatGPT Image 22 avr. 2025, 13_58_38.png" type="image/x-icon">
+    <title>Project</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="" >
+
+    <!-- PrismJS pour la coloration syntaxique -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/projets/project.css">
+    <link rel="stylesheet" href="../../css/projets/marvel-travel.css">
+</head>
+<body>
+    <!-- ==========================
+         Header Section
+         ========================== -->
+         <header id="navbar">
+          <nav>
+            <p class="title">Ibrahima BALDE CISSE</p>
+            <ul>
+              <li><a class="navlink" href="../../index.html#about">About</a></li>
+              <li><a class="navlink" href="../../index.html#projects">Projects</a></li>
+              <li><a class="navlink" href="../../index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
+
+    <!-- ==========================
+         Main Content
+         ========================== -->
+         <main>
+          <p class="bolder">Marvel Travel: Technical Breakdown</p>
+          <p class="light">(Based on GitHub repository: <a href="https://github.com/charlyppr/MarvelTravel" class="link-project">Marvel-Travel</a>)</p>
+          
+          <p class="semi-title">Frontend Overview</p>
+          <p class="light">A streamlined interface focusing on user experience.</br>View a static demo version: <a href="../../marveltravel-static-version/accueil.html" class="link-project">Marvel Travel Demo</a> (Note: Backend features disabled).</p>
+
+          <div class="gallery">
+            <div><img src="../../images/MarvelTravel/inscription.png" alt=""></div>
+            <div><img src="../../images/MarvelTravel/recapitulatif.png" alt=""></div>
+            <div><img src="../../images/MarvelTravel/filtres.png" alt=""></div>
+            <div><img src="../../images/MarvelTravel/un_voyage.png" alt=""></div>
+            <div><img src="../../images/MarvelTravel/voyage.png" alt=""></div>
+          </div>
+
+          
+          <section class="project-details">
+            <div class="project-details-text">
+              <p>Key Components</p>
+              <ul>
+                <li><p class="light">Responsive Design : Flex layout adapting to all devices.</p></li>
+                <li><p class="light">Interactive Animations: CSS hover effects and smooth transitions.</p></li>
+                <li><p class="light">Dynamic Content: JavaScript DOM manipulation for real-time updates.</p></li>
+                <li><p class="light">Form Validation: Client-side checks for reservations and user inputs.</p></li>
+              </ul>
+            </div>
+            <div class="project-details-image">
+              <img src="../../images/MarvelTravel/voyage.png" alt="Marvel Travel" class="image-project">
+            </div>
+          </section>
+          <p class="semi-title">Backend Architecture</p>
+          <section class="project-details">
+            <div class="project-details-text">
+              <p>User Authentification System</p>
+              <p class="light">On the backend, Marvel Travel relies on PHP to handle core business logic and data management. User authentication is managed through PHP sessions, allowing users to register, log in, and maintain their session securely across pages. User credentials are stored in a JSON file (utilisateurs.json), which acts as a simple database substitute for this academic project.</p><br><p class="light">Data persistence is achieved by reading and writing JSON files. The application maintains three main JSON data stores: voyages.json for destination information, commandes.json for reservation records, and utilisateurs.json for user accounts. When a user makes a reservation, the backend updates commandes.json to store this new booking, associating it with the logged-in user.</p>
+            </div>
+            <div class="project-details-image">
+              <pre><code class="language-c">{
+    "civilite": "M",
+    "first_name": "Caryl",
+    "last_name": "Lebreton",
+    "email": "caryl@gmail.com",
+    "password": "$2y$10$y5YTe.HY7yPBsiRIo1henOpCRO6NPQ35ortcIul4zK0oWL1DR\/5FG",
+    "date_naissance": "2000-07-18",
+    "nationalite": "Asgardienne",
+    "role": "admin",
+    "passport_id": "6698892731",
+    "date_inscription": "2025-03-30 22:51:49",
+    "blocked": false,
+    "vip": false,
+    "last_login": "2025-04-23 19:20:32"
+}</code></pre>
+            </div>
+          </section>
+          <section class="project-details">
+            <div class="project-details-text">
+              <p>Booking & Payement</p>
+              <p class="light">The payment process is simulated through an API provided by the school. This integration validates payment details such as card number and expiration date, mimicking a real-world transaction. Upon successful payment, the system generates a confirmation receipt, typically in PDF format, providing users with proof of their booking.</p><br><p class="light">When a user makes a reservation, the application checks the availability of the selected destination and updates the commandes.json file accordingly. This ensures that users can only book available trips, preventing overbooking.</p>
+            </div>
+            <div class="project-details-image">
+              <pre><code class="lang-php s-code-block">&lt;?php
+$_SESSION['reservation_pending'] = [
+  'voyage_id' => $id,
+  'voyage_titre' => $voyage['titre'],
+  'voyage_image' => $voyage['image'],
+  'transaction_id' => $transaction,
+  'montant' => $prix_total_api,
+  'date_debut' => $date_debut,
+  'date_fin' => $date_fin,
+  'nb_personne' => $nb_personne,
+  'voyageurs' => $voyageurs,
+  'promo_code' => $promo_code,
+  'reduction' => $reduction,
+  'created_at' => time()
+];
+                
+$api_key = getAPIKey($vendeur);
+$control = md5($api_key . "#" . $transaction . "#" . $prix_total_api . "#" . $vendeur . "#" . $retour . "#");
+?&gt;</code></pre>
+          </section>
+          <section class="project-details">
+            <div class="project-details-image">
+              <img src="../../images/MarvelTravel/profil.png" alt="">
+            </div>
+            <div class="project-details-text">
+              <p class="light">User profile management is another key backend feature. Each user has access to a personalized profile page where they can view their reservation history, which is filtered from the commandes.json file based on their username. Users can also customize their avatars, with image uploads handled locally on the server. Persistent sessions ensure that users remain logged in as they navigate through the site.</p>
+            </div>
+          </section>
+          <section class="passeport">
+            <p class="light">All users receive a fictitious passport on their profile.</p>
+          </section>
+          <section class="passeport">
+            <img src="../../images/MarvelTravel/passeport.png" alt="passeport">
+          </section>
+          <section class="project-details">
+            <div class="summary">
+              <p class="light">Marvel Travel demonstrates a solid grasp of full-stack web development fundamentals. The frontend provides an accessible and visually appealing interface, while the backend efficiently manages data and user interactions using PHP and JSON files. Despite its academic scope, the project is structured modularly, making it a strong foundation for future enhancements such as database integration, improved security measures, and richer user</p><br><p class="light">If you want, I can help you draft similar detailed descriptions for your other projects!</p>
+            </div>
+         </main>
+        
+
+        <!-- ==========================
+         Footer Section
+         ========================== -->
+         <footer>
+            <section class="right">
+              <p class="light">all right reserved</p>
+              <p class="light">Ibrahima BALDE CISSE - 2025</p>
+              <p class="light">Paris, France</p>
+            </section>
+            <section class="contact" id="contact">
+              <p><a href="https://www.linkedin.com/in/ibrahima-balde-cisse"><div class="light">Linkedin</div></a></p>
+              <p><a href="mailto:ibrahima.balde.cisse@gmail.com"><div class="light">ibrahima.balde.cisse@gmail.com</div></a></p>
+              <p><a href="tel:+33783099674"><div class="light">+33 7 83 09 96 74</div></a></p>
+            </section>
+          </footer>
+    
+          <!-- ==========================
+             Scripts
+             ========================== -->
+      <script src="../../js/bar.js"></script>
+      <script src="../../js/project.js"></script>
+    </body>
+    
+    </html>

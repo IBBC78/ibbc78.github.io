@@ -1,0 +1,15 @@
+img[alt="passeport"]{
+    width: 40%;
+}
+
+.passeport{
+    display: flex;
+    justify-content: center;
+    margin: 25px 0;
+}
+
+@media screen and (max-width:1000px) {
+    img[alt="passeport"]{
+        width: 90%;
+    }
+}
