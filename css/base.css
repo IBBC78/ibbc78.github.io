@@ -15,10 +15,6 @@ body {
     margin: 0;
 }
 
-main{
-    margin: 0 7%;
-}
-
 a {
     text-decoration: none;
     color: inherit;
@@ -39,7 +35,7 @@ header {
     padding: 0;
     position: sticky;
     top: 0;
-    height: 65px;
+    height: 90px;
     background: #ffffff;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.9) 75%  ,rgba(255, 255, 255, 0.25) 75%, rgba(255, 255, 255, 0) 100%);
     transition: top 0.3s;
@@ -72,10 +68,36 @@ nav ul li a {
     font-size: 20px;
 }
 
-nav ul li a:hover {
-    color: #828282;
-    transition: 200ms;
+.navlink {
+    color: #000000;
+    font-weight: 550;
+    position: relative;
+    display: inline-block;
 }
+  
+.navlink::after,
+.navlink::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: #000000;
+  bottom: -5px;
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease-out;
+}
+
+.navlink::before {
+  bottom: -5px;
+  transform-origin: left;
+}
+
+.navlink:hover::after,
+.navlink:hover::before {
+  transform: scaleX(1);
+}   
 
 /* ==========================
    Typography

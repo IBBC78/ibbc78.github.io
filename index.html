@@ -35,9 +35,9 @@
       <nav>
         <p class="title">Ibrahima BALDE CISSE</p>
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a class="navlink" href="#about">About</a></li>
+          <li><a class="navlink" href="#projects">Projects</a></li>
+          <li><a class="navlink" href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -67,7 +67,7 @@
 
       <!-- Current Project Section -->
       
-      <section class="current-project">
+      <section class="current-project" id="projects">
         <p class="semi-title">Current project</p>
         <div class="current-project-box">
           <div class="current-project-text">
@@ -119,16 +119,5 @@
       </section>
     </footer>
   </body>
-  <script>
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-      if (prevScrollpos > currentScrollPos) {
-        document.getElementById("navbar").style.top = "0";
-      } else {
-        document.getElementById("navbar").style.top = "-90px";
-      }
-      prevScrollpos = currentScrollPos;
-    }
-    </script>
+  <script src="/js/bar.js"></script>
 </html>

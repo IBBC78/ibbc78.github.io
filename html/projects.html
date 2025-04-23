@@ -41,198 +41,30 @@
     <!-- ==========================
          Header Section
          ========================== -->
-    <header>
-        <nav>
-          <p class="title">Ibrahima BALDE CISSE</p>
-          <ul>
-            <li><a href="../index.html#about">About</a></li>
-            <li><a href="../index.html#projects">Projects</a></li>
-            <li><a href="../index.html#contact">Contact</a></li>
-          </ul>
-        </nav>
-      </header>
+         <header id="navbar">
+          <nav>
+            <p class="title">Ibrahima BALDE CISSE</p>
+            <ul>
+              <li><a class="navlink" href="../index.html#about">About</a></li>
+              <li><a class="navlink" href="../index.html#projects">Projects</a></li>
+              <li><a class="navlink" href="../index.html#contact">Contact</a></li>
+            </ul>
+          </nav>
+        </header>
 
     <!-- ==========================
          Main Content
          ========================== -->
-    <main>
-        <!-- Projects Section -->
-        <section class="projects" id="projects">
-            <p class="bolder">Projects</p>
-            <div class="project-list">
-              <h3>Analyzing the Link Between Urbanization and Economic Growth</h3>
-                <div class="project-item">
-                    
-                    <div class="project-item-part">
-                      
-                      <div class="project-item-text">
-                        <p class="light">As part of a team research project, we set out to explore the following question: Is urbanization correlated with economic growth? Our goal was to better understand the relationship between the growing concentration of people in cities and the increase in GDP per capita observed in many countries. We combined economic theory, existing literature, and statistical tools to support our analysis, all while working with publicly available data from the World Bank.</p>
-                      </div>
-                      <div class="project-item-image">
-                        <iframe src="https://data.worldbank.org/share/widget?indicators=SP.URB.TOTL.IN.ZS&view=map" frameBorder='0' scrolling="no" ></iframe>
-                      </div>
-                    </div>
-                    <div class="project-item-part">
-                      <div class="project-item-image">
-                        <pre><code class="language-python">
-import pandas as pd
-
-# Nous collectons les données sur la population urbaine et le PIB par habitant pour les pays suivants : France, États-Unis, Chine, Brésil et Inde
-# Nous utilisons un échantillon de pays pour des raisons de lisibilité
-# Nous nous concentrons sur la période 2000-2020
-# Les données sont disponibles sur le site de la Banque mondiale : https://donnees.banquemondiale.org/indicateur/SP.URB.TOTL.IN.ZS?locations=FR
-
-# récupération des données
-urban_pop = pd.read_csv("../input/API_SP.URB.TOTL.IN.ZS_DS2_en_csv_v2_553.csv", skiprows=4)
-gdp_per_capita = pd.read_csv("../input/API_NY.GDP.MKTP.KD.ZG_DS2_fr_csv_v2_2076.csv", skiprows=4)
-
-# nettoyage des données
-urban_pop = urban_pop.melt(id_vars=["Country Name", "Country Code"], var_name="Year", value_name="Urban Population (%)") # melt permet de transformer les colonnes en lignes
-gdp_per_capita = gdp_per_capita.melt(id_vars=["Country Name", "Country Code"], var_name="Year", value_name="Croissance du PIB (% annuel)")
-urban_pop = urban_pop[pd.to_numeric(urban_pop['Year'], errors='coerce').notnull()] # on garde les lignes où l'année est un nombre
-gdp_per_capita = gdp_per_capita[pd.to_numeric(gdp_per_capita['Year'], errors='coerce').notnull()]
-urban_pop["Year"] = urban_pop["Year"].astype(int) # on convertit l'année en entier
-gdp_per_capita["Year"] = gdp_per_capita["Year"].astype(int)
-
-# fusion des données dans un seul dataframe
-df = pd.merge(urban_pop, gdp_per_capita, on=["Country Name", "Country Code", "Year"])
-df = df[(df["Year"] >= 2000) & (df["Year"] <= 2020)] # on garde les données entre 2000 et 2020
-df = df[df["Country Code"].notnull()] # on garde les données pour les pays suivants : France, États-Unis, Chine, Brésil et Inde
-df.to_csv("../output/donnees_monde.csv", index=False) # on sauvegarde les données dans un fichier CSV
-                        </code></pre>   
-                      </div>
-                      <div class="project-item-text">
-                        <p class="light">We first collected, cleaned, and merged global data on urban population shares and GDP per capita. Using Python and Pandas, we handled outliers and missing values, then built visualizations and statistical models (linear regression via OLS) to quantify the relationship. The results revealed a strong overall correlation — especially in developed countries — but also showed significant disparities depending on region and development stage. We later refined our model by adding education level as a second variable, revealing that urbanization alone does not fully explain economic growth.</p>
-                      </div>
-                    </div>
-                    <div class="project-item-part">
-                      <div class="project-item-text">
-                        <p class="light">This project helped me sharpen my skills in data analysis, data visualization, and collaborative research. More importantly, it showed me how statistical tools and economic reasoning can be combined to address complex real-world questions. Whether it’s understanding urban dynamics or solving business challenges, I enjoy using data to find meaningful insights that go beyond surface-level assumptions.</p>
-                      </div>
-                      <div class="project-item-image">
-                        <img src="../images/Analysis/eco.png" alt="Urbanization and Economic Growth" class="project-photo"/>
-                      </div>
-                    </div>
-                </div>
-                <h3>C-Wire – CSV Data Analysis CLI Tool (C + Shell)</h3>
-                <div class="project-item">
-                  
-                  <div class="project-item-part">
-                    <div class="project-item-text">
-                      <p class="light">C-Wire is a collaborative academic project developed during my second year of engineering studies. Our objective was to create a command-line tool capable of analyzing large CSV files simulating the structure of an energy distribution network. The program had to parse, process, and classify electrical consumption data associated with high-voltage and low-voltage substations. Our approach relied heavily on optimized C programming and Bash scripting to ensure performance and usability.</p>
-                    </div>
-                    <div class="project-item-image">
-                      <pre><code class="language-bash">
-all: execdata
-smartrobusnest.o: smartrobusnest.c smartrobusnest.h
-	gcc -c smartrobusnest.c -o smartrobusnest.o
-avl.o: avl.c avl.h smartrobusnest.h structures.h
-	gcc -c avl.c -o avl.o
-maintreatment.o: maintreatment.c maintreatment.h avl.h smartrobusnest.h structures.h
-	gcc -c maintreatment.c -o maintreatment.o
-execdata: smartrobusnest.o avl.o maintreatment.o
-	gcc smartrobusnest.o avl.o maintreatment.o -o execdata
-                      </code></pre>
-                    </div>
-                  </div>
-                  <div class="project-item-part">
-                    <div class="project-item-image">
-                      <img src="../images/C-Wire/lv.png" alt="lv">
-                    </div>
-                    <div class="project-item-text">
-                      <p class="light">We implemented a self-balancing AVL tree structure in C to store and sort data dynamically by substation. This allowed for efficient insertion, lookup, and comparison operations. On the Shell side, we optimized the data extraction using grep and pipe operations to avoid heavy I/O caused by temporary files. This synergy between C and Shell scripting reduced processing times from 30+ minutes to under 15 seconds on realistic datasets.</p>
-                    </div>
-                    
-                  </div>
-                  <div class="project-item-part">
-                    <div class="project-item-text">
-                      <p class="light">One of the most demanding aspects of the project was runtime optimization. Initially, poorly handled Shell loops and large temporary files made the tool unusably slow. Through careful profiling and structural improvements (alignment padding, logic refactoring), we managed to drastically improve performance. We also had to tackle issues in GnuPlot rendering, especially axis scaling and data readability. Solving these pushed us to divide our data into underload and overload categories, and develop two separate plots for each.</p>
-                      <p class="light">C-Wire generates sorted CSV files and detailed visual summaries in the form of GnuPlot-generated histograms. These are exported as both PNG images and a combined PDF report. Among the bonus features, we implemented clean output formatting, logging, and a complete README + LaTeX documentation.</p>
-                    </div>
-                    <div class="project-item-image">
-                      <img src="../images/C-Wire/gnuplot.png" alt="gnuplot">
-                    </div>
-                  </div>
-                </div>
-                <h3>CY-Fish – Turn-Based Strategy Game (Terminal in C)</h3>
-                <div class="project-item">
-                  
-                  <div class="project-item-part">
-                    <div class="project-item-image">
-                      <img src="../images/CY-Fish/plateau.png" alt="hexa">
-                    </div>
-                    <div class="project-item-text">
-                      <p class="light">CY-Fish is a terminal-based strategy game developed during my first year of engineering school. The concept is simple but engaging: players control penguins on a melting iceberg, trying to collect as many fish as possible before the game ends. Each turn, a player moves one of their penguins in a straight line across a hexagonal grid, collecting fish from the starting tile, which then disappears. The challenge increases as the board shrinks and options become more limited.</p>
-                    </div>
-                    
-                  </div>
-                  <div class="project-item-part">
-                    <div class="project-item-text">
-                      <p class="light">The game was coded in C with a focus on modularity and stability. We implemented grid initialization, movement validation, turn management, and a scoring system. Depending on the number of players, the number of penguins and grid size adapt automatically. Multiple rule variants were integrated: from random or manual starting positions, to the inclusion of golden or rotten fish for bonus or penalty points. The game ends when all players are blocked, and the winner is announced based on the total score.</p>
-                    </div>
-                    <div class="project-item-image">
-                      <div class="mermaid">
-                      flowchart LR
-
-                        style A fill:#828282,stroke:#ccc,stroke-width:0px,color:white
-                        style B fill:#828282,stroke:#ccc,stroke-width:0px,color:white
-                        style C fill:#828282,stroke:#ccc,stroke-width:0px,color:white
-                        style D fill:#828282,stroke:#ccc,stroke-width:0px,color:white
-
-                        A[" <b>Input</b><br>the gamers play"] --> B[" <b>Check</b><br>Is the move valid ?"]
-                        B --> C[" <b>Update Grid</b>"]
-                        C --> D[" <b>Switch Turn</b><br>Next player turn"]
-                        D --> A
-                      </div>                       
-                    </div>
-                  </div>
-                  <div class="project-item-part">
-                    <div class="project-item-text">
-                      <p class="light">Handling hexagonal movement logic on a 2D rectangular array was a real challenge. We had to create coordinate conversion logic to simulate 6-directional movement while respecting blocked paths, occupied tiles, and out-of-bounds cases. Ensuring clean user interaction and error handling in a text-only environment also tested our ability to debug and design with clarity. Through this, we learned a lot about pointer management, game state modeling, and teamwork under deadline pressure.</p>
-                    </div>
-                    <div class="project-item-image">
-                      <pre><code class="language-c">
-int verifMooves(Hexagone **grid, int x1, int y1, int x2, int y2) {
-  if (x1 == x2 && y1 == y2) {
-      printf("Unable to move: You must move at least one square..\n");
-      return 1;
-  }
-  if (x2 < 0 || x2 >= ROW || y2 < 0 || y2 >= COLUMN) {
-      printf("Unable to move: Off grid.\n");
-      return 1;
-  }
-  if (grid[x2][y2].player == -1) {
-      printf("Cannot move: This square is already occupied.\n");
-      return 1;
-  }
-  if (grid[x2][y2].fish == 0) {
-      printf("Unable to move: This square is sunk.\n");
-      return 1;
-  }
-  if (grid[x2][y2].x == 8 && grid[x2][y2].y % 2 == 1) {
-      printf("Unable to move: This square is prohibited.\n");
-      return 1;
-  }
-  printf("Valid travel\n");
-  return 0;
-}
-                      </code></pre>
-                    </div>
-                  </div>
-                  <div class="project-item-part">
-                    <div class="project-item-image">
-                      <img src="../images/ChatGPT Image 22 avr. 2025, 14_07_12.png" alt="pinguin">
-                    </div>
-                    <div class="project-item-text">
-                      <p class="light">This project sharpened my understanding of data structures, game logic, and user experience design even in constrained environments like a terminal. It also pushed me to think carefully about modular code, version control, and collaborative development. CY-Fish was a turning point in my early programming journey—it made me appreciate how much thought goes into even the most minimal interactive application.</p>
-                    </div>
-                    
-                  </div>
-                </div>
-            </div>
-        </section>
-    </main>
+         <main>
+          <ul class="gallery" id="gallery">
+            <li style="background-color: #f6bd60;"><p class="bolder">PROJET 1</p></li>
+            <li style="background-color: #f5cac3;"><p class="bolder">PROJET 2</p></li>
+            <li style="background-color: #84a59d;"><p class="bolder">PROJET 3</p></li>
+            <li style="background-color: #f28482;"><p class="bolder">PROJET 4</p></li>
+          </ul>
+        </main>
         
+    
     
       <!-- ==========================
          Footer Section
@@ -249,5 +81,12 @@ int verifMooves(Hexagone **grid, int x1, int y1, int x2, int y2) {
           <p><a href="tel:+33783099674"><div class="light">+33 7 83 09 96 74</div></a></p>
         </section>
       </footer>
+
+      <!-- ==========================
+         Scripts
+         ========================== -->
+  <script src="../js/bar.js"></script>
+  <script src="../js/project.js"></script>
 </body>
+
 </html>
