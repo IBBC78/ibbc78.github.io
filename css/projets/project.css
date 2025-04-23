@@ -4,6 +4,7 @@ main {
 
 .light{
     margin: 0;
+    text-align: left;
 }
 
 .link-project {
@@ -51,7 +52,7 @@ main {
 
 .project-details-image {
     display: initial;
-    width: 55%;
+    width: 55%; 
 }
 
 pre[class*="language-"] {
