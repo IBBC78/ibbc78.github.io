@@ -48,7 +48,7 @@
             <p class="title">Ibrahima BALDE CISSE</p>
             <ul>
               <li><a class="navlink" href="../../index.html#about">About</a></li>
-              <li><a class="navlink" href="../../index.html#projects">Projects</a></li>
+              <li><a class="navlink" href="../projects.html">Projects</a></li>
               <li><a class="navlink" href="../../index.html#contact">Contact</a></li>
             </ul>
           </nav>
@@ -61,6 +61,13 @@
         <p class="bolder">Urban Economics Data Analysis: Exploring the Link Between Urbanization and Economic Growth</p>
         <p class="light">(Based on GitHub repository: <a href="https://github.com/Simonhamel1/projet-eco-urbaine" class="link-project">Urban Economics Data Analysis</a>)</p>
 
+        <div class="gallery">
+          <div><img src="../../images/Analysis/bulle.png" alt=""></div>
+          <div><img src="../../images/Analysis/code.png" alt=""></div>
+          <div><img src="../../images/Analysis/mco.png" alt=""></div>
+          <div><img src="../../images/Analysis/eco.png" alt=""></div>
+        </div>
+
         <section class="project-details">
             
             <div class="project-details-text">
@@ -72,19 +79,38 @@
         </section>
         <section class="project-details">
             <div class="project-details-image">
-                <img src="" alt="">
+                <img src="../../images/Analysis/notebook.png" alt="notebook">
             </div>
             <div class="project-details-text">
-                <p class="light">The frontend of the project consists of clear, well-annotated Jupyter Notebooks, where the data cleaning, transformation, and visualization steps are documented. Users can follow the entire analytical process, from the initial exploration of the dataset to the generation of insightful graphs. The visualizations—such as correlation plots and time series charts—help illustrate the trends and patterns observed in the data.</p>
+                <p class="light">The frontend of the project consists of clear, well-annotated <strong>Jupyter Notebooks</strong>, where the data cleaning, transformation, and visualization steps are documented. Users can follow the entire analytical process, from the initial exploration of the dataset to the generation of insightful graphs. The visualizations—such as correlation plots and time series charts—help illustrate the trends and patterns observed in the data.</p>
             </div>
         </section>
         <section class="project-details">
             
             <div class="project-details-text">
-                <p class="light">On the backend, the analysis is powered by Python, utilizing libraries such as Pandas for data manipulation and Matplotlib for visualization. The workflow begins with importing and cleaning the raw data, handling missing values, and selecting relevant indicators. The team then applies statistical methods to quantify the correlation between the degree of urbanization and GDP per capita growth across countries and over time. The code is modular and reproducible, enabling further exploration or adaptation to new datasets.</p>
+                <p class="light">On the backend, the analysis is powered by Python, utilizing libraries such as <strong>Pandas</strong> for data manipulation and <strong>Matplotlib</strong> for visualization. The workflow begins with importing and cleaning the raw data, handling missing values, and selecting relevant indicators. The team then applies statistical methods to quantify the correlation between the degree of urbanization and GDP per capita growth across countries and over time. The code is modular and reproducible, enabling further exploration or adaptation to new datasets.</p>
             </div>
             <div class="project-details-image">
-                <img src="" alt="">
+                <pre><code class="language-python">import pandas as pd
+
+# Charger les fichiers CSV
+urban_pop = pd.read_csv("../input/API_SP.URB.TOTL.IN.ZS_DS2_en_csv_v2_553.csv", skiprows=4)
+gdp_per_capita = pd.read_csv("../input/API_NY.GDP.PCAP.CD_DS2_en_csv_v2_76317.csv", skiprows=4)
+# Garder uniquement les colonnes utiles (année sous forme de colonnes)
+urban_pop = urban_pop.melt(id_vars=["Country Name", "Country Code"], var_name="Year", value_name="Urban Population (%)")
+gdp_per_capita = gdp_per_capita.melt(id_vars=["Country Name", "Country Code"], var_name="Year", value_name="GDP per capita")
+# Filtrer les valeurs non numériques dans la colonne 'Year'
+urban_pop = urban_pop[pd.to_numeric(urban_pop['Year'], errors='coerce').notnull()]
+gdp_per_capita = gdp_per_capita[pd.to_numeric(gdp_per_capita['Year'], errors='coerce').notnull()]
+# Convertir la colonne 'Year' en entier
+urban_pop["Year"] = urban_pop["Year"].astype(int)
+gdp_per_capita["Year"] = gdp_per_capita["Year"].astype(int)
+# Fusionner les deux datasets
+df = pd.merge(urban_pop, gdp_per_capita, on=["Country Name", "Country Code", "Year"])
+# Filtrer pour certaines années et pays (exemple)
+df = df[(df["Year"] >= 2000) & (df["Year"] <= 2020)]
+df = df[df["Country Code"].isin(["FRA", "USA", "CHN", "BRA", "IND"])]  # Sélection de quelques pays
+df.to_csv("../output/donnees_monde.csv", index=False)</code></pre>
             </div>
         </section>
         <section class="summary">

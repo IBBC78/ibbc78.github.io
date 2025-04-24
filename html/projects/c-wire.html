@@ -47,7 +47,7 @@
             <p class="title">Ibrahima BALDE CISSE</p>
             <ul>
               <li><a class="navlink" href="../../index.html#about">About</a></li>
-              <li><a class="navlink" href="../../index.html#projects">Projects</a></li>
+              <li><a class="navlink" href="../projects.html">Projects</a></li>
               <li><a class="navlink" href="../../index.html#contact">Contact</a></li>
             </ul>
           </nav>
@@ -61,7 +61,18 @@
         <p class="light">(Based on GitHub repository: <a href="https://github.com/gaspardsaves/genElec-MEF2-B" class="link-project">C-Wire</a>)</p>
         <section class="project-details">
             <div class="project-details-image">
-                <img src="" alt="">
+                <pre><code class="language-csv">Power plant;HV-B Station;HV-A Station;LV Station;Company;Individual;Capacity;Load
+1;-;-;-;-;-;2707288990;-
+1;1;-;-;-;-;916264250;-
+1;1;-;-;71;-;-;213302747
+1;1;1;-;-;-;916264250;-
+1;-;1;-;61;-;-;226765650
+1;-;1;1;-;-;241999040;-
+1;-;-;1;1;-;-;96811846
+1;-;-;1;-;21;-;28198359
+1;-;-;1;-;22;-;26074220
+1;-;-;1;-;23;-;20274618
+1;-;1;2;-;-;382635838;-</code></pre>
             </div>
             <div class="project-details-text">
                 <p class="light">C-Wire is a command-line tool developed in C and Shell, designed to analyze large CSV files that simulate an energy distribution network. The project was carried out as a team effort, with a focus on both technical performance and collaborative workflow. The tool’s main objective is to process and classify electricity consumption data associated with high-voltage and low-voltage substations, providing clear and actionable output for further analysis.</p>
@@ -73,12 +84,25 @@
                 <p class="light">The frontend of C-Wire is a straightforward terminal interface, where users can execute various commands to analyze specific aspects of the dataset. The tool offers multiple functionalities, such as sorting substations by capacity, generating CSV output files, and producing visual histograms using GnuPlot scripts. The output files are organized for easy interpretation, and the tool is optimized for speed and efficiency, even with large datasets.</p>
             </div>
             <div class="project-details-image">
-                <img src="" alt="">
+                <img src="../../images/C-Wire/terminal.png" alt="">
             </div>
         </section>
         <section class="project-details">
             <div class="project-details-image">
-                <img src="" alt="">
+                <pre><code class="language-c">#ifndef STRUCTURES
+#define STRUCTURES
+#include &#60;stddef.h&#62;
+
+typedef struct post_elec {
+    int id;
+    int balanceFactor;
+    long capacity;
+    long consumption;
+    struct post_elec* pLeft;
+    struct post_elec* pRight;
+} ElecEntity; 
+              
+#endif</code></pre>
             </div>
             <div class="project-details-text">
                 <p class="light">On the backend, C-Wire leverages advanced data structures—such as AVL trees—for efficient data storage and retrieval. The Shell scripts handle data preprocessing and argument parsing, while the C modules perform the heavy computation and sorting tasks. One of the project’s key achievements was optimizing the workflow to minimize processing time: by piping data directly from Shell to C and reducing the use of temporary files, the team achieved significant performance gains. The project also includes automated generation of PDF reports containing the produced histograms, thanks to LaTeX integration.</p>

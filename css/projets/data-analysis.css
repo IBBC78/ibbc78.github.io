@@ -5,6 +5,17 @@ iframe {
     margin: 0;
 }
 
+.gallery div{
+    width: 80%;
+}
+
+.gallery div img{
+    margin:0 15px;
+    height: 100%;
+    transition: all 0.3s ease-in-out;
+    object-fit: contain;
+}
+
 @media screen and (max-width: 1000px) {
     iframe {
         height: 300px;
