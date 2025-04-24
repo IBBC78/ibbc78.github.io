@@ -58,26 +58,41 @@
          ========================== -->
     <main>
         <p class="bolder">CY-Fish: A Terminal-Based Strategy Game</p>
+        <p class="light">CY-Fish is a turn-based strategy game developed in C for the terminal, designed as a collaborative academic project. The game immerses players in a challenging environment where they control penguins on a melting iceberg, competing to collect as many fish as possible before the board disappears. The gameplay is based on a hexagonal grid, requiring players to anticipate their opponents' moves and adapt to the shrinking play area.</p>
         <section class="project-details">
-            <div class="project-details-image">
-                <img src="" alt="">
-            </div>
-            <div class="project-details-text">
-                <p class="light">CY-Fish is a turn-based strategy game developed in C for the terminal, designed as a collaborative academic project. The game immerses players in a challenging environment where they control penguins on a melting iceberg, competing to collect as many fish as possible before the board disappears. The gameplay is based on a hexagonal grid, requiring players to anticipate their opponents' moves and adapt to the shrinking play area.</p>
-            </div>
-        </section>
-        <section class="project-details">
-            
             <div class="project-details-text">
                 <p class="light">The frontend of CY-Fish is entirely text-based, using ASCII graphics to represent the board, penguins, and fish. The interface is optimized for clarity and quick decision-making, allowing players to easily visualize their positions and plan their strategies. Although visually simple, the terminal interface provides a retro gaming experience and ensures compatibility across different systems.</p>
             </div>
             <div class="project-details-image">
-                <img src="" alt="">
+                <img src="../../images/CY-Fish/plateau.png">
             </div>
         </section>
         <section class="project-details">
             <div class="project-details-image">
-                <img src="" alt="">
+                <pre><code class="language-c">int verifMooves(Hexagone **grid, int x1, int y1, int x2, int y2) {
+if (x1 == x2 && y1 == y2) {
+    printf("Unable to move: You must move at least one square..\n");
+    return 1;
+}
+if (x2 < 0 || x2 >= ROW || y2 < 0 || y2 >= COLUMN) {
+    printf("Unable to move: Off grid.\n");
+    return 1;
+}
+if (grid[x2][y2].player == -1) {
+    printf("Cannot move: This square is already occupied.\n");
+    return 1;
+}
+if (grid[x2][y2].fish == 0) {
+    printf("Unable to move: This square is sunk.\n");
+    return 1;
+}
+if (grid[x2][y2].x == 8 && grid[x2][y2].y % 2 == 1) {
+    printf("Unable to move: This square is prohibited.\n");
+    return 1;
+}
+printf("Valid travel\n");
+return 0;
+}</code></pre>
             </div>
             <div class="project-details-text">
                 <p class="light">On the backend, the project features robust logic for managing game turns, movement validation, and dynamic board updates as the iceberg melts. The code is structured to ensure fair play, with clear rules for movement and fish collection. Special attention was given to handling edge cases, such as blocked paths or simultaneous moves. The project also includes a modular design, making it easy to extend or adapt for new game modes or features in the future.</p>
