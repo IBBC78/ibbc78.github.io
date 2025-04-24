@@ -92,6 +92,24 @@ main{
   transform: scaleX(1);
 }
 
+.resume
+{
+    padding: 10px 15px;
+    border: solid 1px #191919;
+    border-radius: 8px; 
+}
+
+.resume:hover
+{
+    background-color: #484848;
+    color: #f0f0f0;
+    border: #484848;
+    transition: 500ms;
+
+}
+
+
+
 @media screen and (max-width:1000px){
     .current-project-photo-small{
         display: initial;
