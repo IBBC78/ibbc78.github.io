@@ -119,6 +119,7 @@ img[alt="link"]{
 }
 
 .download {
+    text-align: center;
     color:#ffffff ;
     font-size: 13px;
     background: #282828;
@@ -132,6 +133,10 @@ img[alt="link"]{
     transition: 500ms;
 }
 
+
+.resume-box{
+    display: flex;
+}
 @media screen and (max-width:1000px){
     .current-project-photo-small{
         display: initial;
