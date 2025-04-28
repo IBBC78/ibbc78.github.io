@@ -92,6 +92,10 @@ main{
   transform: scaleX(1);
 }
 
+a:focus {
+    color: #002478;
+}
+
 .resume
 {
     padding: 10px 15px;
@@ -112,9 +116,21 @@ img[alt="link"]{
     width: 20px;
     height: 20px;
     margin-left: 5px;
-    
 }
 
+.download {
+    color:#ffffff ;
+    font-size: 13px;
+    background: #282828;
+    padding: 15px 20px;
+    border-radius: 16px;
+    margin: 15px;
+}
+
+.download:hover {
+    background: #4e4e4e;
+    transition: 500ms;
+}
 
 @media screen and (max-width:1000px){
     .current-project-photo-small{
@@ -156,5 +172,10 @@ img[alt="link"]{
 
     .current-project-photo-small, .interest-photo, .about-photo {
         width: 90%;
+    }
+
+    .download{
+        font-size: 12px;
+        padding: 10px 15px;
     }
 }
