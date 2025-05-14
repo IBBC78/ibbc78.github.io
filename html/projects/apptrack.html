@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JBMKM54DLZ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JBMKM54DLZ');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../images/ChatGPT Image 22 avr. 2025, 13_58_38.png" type="image/x-icon">
+    <title>Project</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="" >
+
+    <!-- PrismJS pour la coloration syntaxique -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css">
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-java.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-bash.min.js"></script>
+
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+      mermaid.initialize({ startOnLoad: true });
+    </script>
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/projets/project.css">
+    <link rel="stylesheet" href="../../css/projets/apptrack.css">
+</head>
+<body>
+    <!-- ==========================
+         Header Section
+         ========================== -->
+         <header id="navbar">
+          <nav>
+            <p class="title">Ibrahima BALDE CISSE</p>
+            <ul>
+              <li><a class="navlink" href="../../index.html#about">About</a></li>
+              <li><a class="navlink" href="../projects.html">Projects</a></li>
+              <li><a class="navlink" href="../../index.html#contact">Contact</a></li>
+
+            </ul>
+          </nav>
+        </header>
+
+    <!-- ==========================
+         Main Content
+         ========================== -->
+    <main>
+      <p class="bolder">App Track: Technical Breakdown</p>
+        <p>Frontend React</p>
+        <section class="project-details">
+            <div class="project-details-image">
+                <img src="../../images/apptrack/apptab.png" alt="AppTrack" class="project-image">
+            </div>
+            <div class="project-details-text">
+                <p class="light">The frontend of AppTrack is built using React, providing a clean and responsive interface for managing job applications. It features a searchable and filterable table that displays all applications, with fields like job title, company name, application date, status, and city. Users can add, edit, and delete jobs directly from the UI, with dynamic state updates and modal dialogs for a smoother UX.</p>
+            </div>
+        </section>
+        <section class="project-details">
+            
+            <div class="project-details-text">
+                <p class="light">Additionally, there's a feature that allows users to input a LinkedIn job offer URL, which triggers a backend process to auto-fill job information using AI and scraping. This enhances usability by reducing manual entry and helps users focus on managing their job search effectively.</p>
+            </div>
+            <div class="project-details-image">
+                <pre>
+                    <code class="language-javascript">
+@import axios from 'axios'
+
+export const analyzeJobFromUrl = async (url) => {
+    const response = await axios.post('http://localhost:8001/scrape-job', { 
+        url: url
+    })
+    return response.data
+}
+</code>
+                </pre>
+            </div>
+        </section>
+        <p>Java Spring Boot Backend</p>
+        <section class="project-details">
+            <div class="project-details-image">
+                <pre><code class="language-java">import jakarta.persistence.*; 
+
+@Entity
+@Table(name = "jobs")
+public class Job {
+    
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String jobTitle;
+    private String companyName;
+    private String status;
+    private String dateApplied;
+    private String city;
+    @Column(columnDefinition = "TEXT")
+    @Lob
+    private String description;
+}
+</code></pre>
+            </div>
+            <div class="project-details-text">
+                <p class="light">The backend is powered by Java Spring Boot, exposing a robust REST API for full CRUD operations on job applications. The API handles endpoints to create, retrieve, update, and delete job entries, and integrates seamlessly with the React frontend. Data is managed using standard Java entity models and persisted via a lightweight in-memory database (or a traditional RDBMS, depending on config).</p>
+            </div>
+        </section>
+        <section class="project-details">
+            
+            <div class="project-details-text">
+                <p class="light">Spring Boot also includes CORS configuration to allow communication with the React frontend. The backend ensures data integrity and handles JSON payloads for both manual input and AI-generated job data, acting as the core logic and persistence layer of the application.</p>
+            </div>
+            <div class="project-details-image">
+                <pre><code class="language-java">@Configuration
+public class CorsConfig {
+
+    @Bean
+    public WebMvcConfigurer corsConfigurer() {
+        return new WebMvcConfigurer() {
+            @Override
+            public void addCorsMappings(@NonNull CorsRegistry registry) {
+                registry.addMapping("/**")
+                        .allowedOrigins("http://localhost:5173") // Autorise le frontend
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // Autorise les méthodes HTTP
+                        .allowedHeaders("*") // Autorise tous les en-têtes
+                        .allowCredentials(true); // Autorise les cookies si nécessaire
+            }
+        };
+    }
+}</code></pre>
+            </div>
+        </section>
+        <p>Python AI Scraper</p>
+
+        <section class="project-details">
+            
+            <div class="project-details-text">
+                <p class="light">The AI-powered scraping functionality is handled by a lightweight Python FastAPI server, which takes in a LinkedIn job URL and extracts relevant job details (title, company, city, description, etc.). This data is returned as structured JSON, ready to be consumed by the Java backend or directly used in the React interface.</p>
+            </div>
+            <div class="project-details-image">
+                <img src="../../images/apptrack/linkedinapp.png" alt="">
+            </div>
+        </section>
+        <section class="project-details">
+            <div class="project-details-image">
+                <pre><code class="language-python">soup = BeautifulSoup(response.text, "html.parser")
+
+        title_tag = soup.find("h1", class_="top-card-layout__title")
+        jobTitle = title_tag.get_text(strip=True) if title_tag else "Non trouvé"
+
+        company_tag = soup.find("a", class_="topcard__org-name-link topcard__flavor--black-link")
+        companyName = company_tag.get_text(strip=True) if company_tag else "Non trouvé"
+
+        city_tags = soup.find("div", class_="t-black--light mt2 job-details-jobs-unified-top-card__tertiary-description-container")
+        city_div = city_tags.find("span", dir_="ltr") if city_tags else None
+</code></pre>
+            </div>
+            <div class="project-details-text">
+                <p class="light">This Python service leverages BeautifulSoup for HTML parsing and can be extended with local LLMs (like Mistral via Ollama) for deeper insights or feedback on job postings. The integration of this AI module brings a smart automation layer to AppTrack, reducing manual effort and enhancing user productivity.</p>
+            </div>
+        </section>
+  
+    </main>
+
+        <!-- ==========================
+         Footer Section
+         ========================== -->
+         <footer>
+            <section class="right">
+              <p class="light">all right reserved</p>
+              <p class="light">Ibrahima BALDE CISSE - 2025</p>
+              <p class="light">Paris, France</p>
+            </section>
+            <section class="contact" id="contact">
+              <p><a href="https://www.linkedin.com/in/ibrahimabaldecisse"><div class="light">Linkedin</div></a></p>
+              <p><a href="mailto:ibrahima.balde.cisse@gmail.com"><div class="light">ibrahima.balde.cisse@gmail.com</div></a></p>
+              <p><a href="tel:+33783099674"><div class="light">+33 7 83 09 96 74</div></a></p>
+            </section>
+          </footer>
+    
+          <!-- ==========================
+             Scripts
+             ========================== -->
+      <script src="../../js/bar.js"></script>
+      <script src="../../js/project.js"></script>
+    </body>
+    
+    </html>
